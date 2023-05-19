@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <!-- <center>
-                <button id="btn-nft-enable" onclick="initFirebaseMessagingRegistration()" class="btn btn-danger btn-xs btn-flat">Allow for Notification</button>
-            </center> -->
+            <center>
+                <button id="btn-nft-enable" onclick="initFirebaseMessagingRegistration()" class="btn btn-primary btn-xs btn-flat">Allow for Notification</button>
+            </center>
             <div class="card mt-4">
                 <div class="card-header">{{ __('Notification') }}</div>
 

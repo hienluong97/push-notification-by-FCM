@@ -66,7 +66,6 @@ In this step, we need to add new row "device_token" in users table and model. th
 ### database/migrations/2020_10_23_144523_add_column_device_token.php
 
 ```
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -94,16 +93,15 @@ class AddColumnDeviceToken extends Migration
      */
     public function down()
     {
-
     }
 }
+
 
 ```
 
 #### app/Models/User.php
 
 ```
-
 <?php
 
 namespace App\Models;
@@ -112,15 +110,16 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -130,9 +129,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -140,15 +139,15 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
 }
-
 ```
 
 Now we need to run migration.
@@ -300,10 +299,19 @@ NOTE: change config firebase initializeApp
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <center>
+                <button id="btn-nft-enable" onclick="initFirebaseMessagingRegistration()" class="btn btn-primary btn-xs btn-flat">Allow for Notification</button>
+            </center>
             <div class="card mt-4">
                 <div class="card-header">{{ __('Notification') }}</div>
 
                 <div class="card-body">
+                    <!-- @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif -->
+
                     <form action="{{ route('send.notification') }}" method="POST">
                         @csrf
                         <div class="form-group">
