@@ -18,7 +18,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show Notification form
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -29,7 +29,7 @@ class HomeController extends Controller
 
 
     /** 
-     * Write code on Method
+     * Update token
      *
      * @return response()
      */
@@ -40,7 +40,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Write code on Method
+     * sendNotification
      *
      * @return response()
      */
