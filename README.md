@@ -198,6 +198,8 @@ You can watch guide [get $SERVER_API_KEY ](https://youtu.be/iOJGtKmk6tk).
 
 #### app/Http/Controllers/HomeController.php
 
+Note: change your SERVER_API_KEY
+
 ```
 <?php
 
@@ -219,7 +221,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show Notification form
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -230,7 +232,7 @@ class HomeController extends Controller
 
 
     /**
-     * Write code on Method
+     * Update token
      *
      * @return response()
      */
@@ -241,7 +243,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Write code on Method
+     * sendNotification
      *
      * @return response()
      */
@@ -249,7 +251,7 @@ class HomeController extends Controller
     {
         $firebaseToken = User::whereNotNull('device_token')->pluck('device_token')->all();
 
-        $SERVER_API_KEY = 'XXXXXXXXXXXXXXXXXXXXXXXX';
+        $SERVER_API_KEY = 'xxxxxxxxxxxxxxxx';
 
         $data = [
             "registration_ids" => $firebaseToken,
@@ -278,6 +280,7 @@ class HomeController extends Controller
         return redirect()->back();
     }
 }
+
 
 
 ```
