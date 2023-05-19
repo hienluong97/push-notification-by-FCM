@@ -153,7 +153,7 @@ class User extends Authenticatable
 Now we need to run migration.
 
 ```
-# php artisan migrate
+# php artisan migrate:fresh --seed
 
 ```
 
